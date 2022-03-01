@@ -1,8 +1,10 @@
-import Header from "./Header.js";
+import Header from "./Home/Header.js";
 
-const Components = () => {
+export default function Components() {
     return (
-        <Header />
+        <>
+            <Header />
+            <hr />
+        </>
     );
 };
-export default Components;
