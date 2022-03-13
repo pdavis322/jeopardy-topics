@@ -9,7 +9,7 @@ export const GetAllTopics = async () => {
   const Topic = Parse.Object.extend("Topics");
   const query = new Parse.Query(Topic);
   return query.find().then((results) => {
-    return results;
+    return results.map((e) => e.get("Name"));
   });
 };
 
@@ -34,3 +34,18 @@ export const GetCategory = async (topicName) => {
     });
   });
 };
+
+// Get user stats given user ID
+/*
+    Usage:
+    GetUserStats(userID).then((results) => {
+        console.log(results);
+    });
+*/
+export const GetUserStats = async (userID) => {
+    // Use Parse.User.current() later
+    const query = new Parse.Query(Parse.User);
+    return query.get(userID).then((results) => {
+        return results.get('Stats');
+    });
+}
