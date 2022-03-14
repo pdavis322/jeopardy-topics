@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 
-import Header from "../Common/Header.js";
 import Topics from "./Topics.js";
 import Clue from "./Clue.js";
 import Answer from "./Answer.js";
 
-import { GetAllTopics, GetCategory, GetUserStats } from "../../Services/CluesService";
+import { GetAllTopics, GetCategory } from "../../Services/CluesService";
 
 export default function HomeParent() {
     const [clueData, setClues] = useState({
         topic: "History",
-        clue: "",
+        clues: [],
+        clueIndex: 0,
         airDate: "",
         catName: "",
         topicList: []
@@ -33,7 +33,8 @@ export default function HomeParent() {
                     ...prevClues,
                     airDate: results.airDate,
                     catName: results.catName,
-                    clue: results.clue
+                    clues: results.clues,
+                    clueIndex: 0
                 };
             });
         });
@@ -54,11 +55,9 @@ export default function HomeParent() {
 
     return (
         <>
-            <Header />
-            <hr />
             <Topics topics={clueData.topicList} currentTopic={clueData.topic} onTopicChange={switchTopic} />
             <div className="content">
-                <Clue catName={clueData.catName} airDate={clueData.airDate} clue={clueData.clue} />
+                <Clue catName={clueData.catName} airDate={clueData.airDate} clue={clueData.clues[clueData.clueIndex]} />
                 <Answer />
             </div>
         </>
