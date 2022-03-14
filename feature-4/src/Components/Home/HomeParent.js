@@ -9,7 +9,8 @@ import { GetAllTopics, GetCategory } from "../../Services/CluesService";
 export default function HomeParent() {
     const [clueData, setClues] = useState({
         topic: "History",
-        clue: "",
+        clues: [],
+        clueIndex: 0,
         airDate: "",
         catName: "",
         topicList: []
@@ -32,7 +33,8 @@ export default function HomeParent() {
                     ...prevClues,
                     airDate: results.airDate,
                     catName: results.catName,
-                    clue: results.clue
+                    clues: results.clues,
+                    clueIndex: 0
                 };
             });
         });
@@ -55,7 +57,7 @@ export default function HomeParent() {
         <>
             <Topics topics={clueData.topicList} currentTopic={clueData.topic} onTopicChange={switchTopic} />
             <div className="content">
-                <Clue catName={clueData.catName} airDate={clueData.airDate} clue={clueData.clue} />
+                <Clue catName={clueData.catName} airDate={clueData.airDate} clue={clueData.clues[clueData.clueIndex]} />
                 <Answer />
             </div>
         </>
