@@ -19,6 +19,18 @@ body {
   text-align: center;
 }
 
+.graph {
+  border: 2px solid white;
+  padding: 10px 10px 20px 10px;
+  margin: 100px 0px 100px 0px
+}
+
+.statsHead {
+  margin: 20px 25%;
+  border: 2px solid white;
+  text-align: center;
+}
+
 /* Styling input text bar */
 input {
   outline: none;
