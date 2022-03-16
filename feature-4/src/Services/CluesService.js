@@ -30,7 +30,7 @@ export const GetCategory = async (topicName) => {
     const catQuery = new Parse.Query(Category);
     catQuery.equalTo("Topic", topicPointer);
     return catQuery.find().then((result) => {
-        return {airDate: result[0].get('AirDate'), catName: result[0].get('Name'), clues: result[0].get('Clues').map(e => e.answer)};
+        return {airDate: result[0].get('AirDate'), catName: result[0].get('Name'), catID: result[0].id, clues: result[0].get('Clues').map(e => e.answer)};
     });
   });
 };
@@ -48,4 +48,11 @@ export const GetUserStats = async (userID) => {
     return query.get(userID).then((results) => {
         return results.get('Stats');
     });
+}
+
+// Submit answer using Parse Cloud Code
+// Server will return whether answer was correct and update user stats
+export const PostAnswer = async (catID, clueIndex, userID, userAnswer) => {
+  const params = {catID: catID, clueIndex: clueIndex, userID: userID, userAnswer: userAnswer};
+  return Parse.Cloud.run("postAnswer", params);
 }
