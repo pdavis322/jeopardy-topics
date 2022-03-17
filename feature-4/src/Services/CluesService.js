@@ -52,7 +52,8 @@ export const GetUserStats = async (userID) => {
 
 // Submit answer using Parse Cloud Code
 // Server will return whether answer was correct and update user stats
-export const PostAnswer = async (catID, clueIndex, userID, userAnswer) => {
-  const params = {catID: catID, clueIndex: clueIndex, userID: userID, userAnswer: userAnswer};
+// If not first attempt, server will not increase correct count even if correct answer
+export const PostAnswer = async (catID, clueIndex, userID, userAnswer, firstAttempt) => {
+  const params = {catID: catID, clueIndex: clueIndex, userID: userID, userAnswer: userAnswer, firstAttempt: firstAttempt};
   return Parse.Cloud.run("postAnswer", params);
 }

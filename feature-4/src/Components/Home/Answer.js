@@ -5,14 +5,15 @@ const Answer = (props) => {
     const [state, setState] = useState({
       response: "",
       correctAnswer: "",
-      userCorrect: ""
+      userCorrect: "",
+      firstAttempt: true
     });
 
     function submitAnswer(response) {
-        PostAnswer(props.clueData.catID, props.clueData.clueIndex, props.clueData.sampleID, response).then((result) => {
-            if (result.status === "ok") {
-              setState({...state, correctAnswer: result.correct, userCorrect: result.answer, response: result.answer === "incorrect" ? "" : state.response});
-            }
+        PostAnswer(props.clueData.catID, props.clueData.clueIndex, props.clueData.sampleID, response, state.firstAttempt).then((result) => {
+            // if (result.status === "ok") {
+            //   setState({...state, correctAnswer: result.correct, userCorrect: result.answer, response: result.answer === "incorrect" ? "" : state.response, firstAttempt: false});
+            // }
         });
     }
 
