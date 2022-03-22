@@ -27,6 +27,7 @@ export default function HomeParent() {
     }, []);
 
     // Update clue whenever topic is changed
+    // Add Parse.current.user() later
     useEffect(() => {
         GetCategory(clueData.topic).then((results) => {
             setClues(prevClues => {

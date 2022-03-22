@@ -57,3 +57,10 @@ export const PostAnswer = async (catID, clueIndex, userID, userAnswer, firstAtte
   const params = {catID: catID, clueIndex: clueIndex, userID: userID, userAnswer: userAnswer, firstAttempt: firstAttempt};
   return Parse.Cloud.run("postAnswer", params);
 }
+
+// Update user stats
+export const UpdateStats = async (userID, topic) => {
+  const user = await (new Parse.Query(Parse.User)).get(userID);
+  let stats = user.get('Stats');
+  console.log(stats);
+}
