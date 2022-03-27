@@ -158,3 +158,6 @@ input[type=email]:invalid {
 label {
     font-size: 1.5rem;
 }
+a {
+    color: #d59f4a;
+}
