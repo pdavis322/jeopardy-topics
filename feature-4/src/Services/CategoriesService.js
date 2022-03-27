@@ -1,17 +1,4 @@
-import * as Env from "./environments";
 import Parse from "parse";
-
-Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
-Parse.serverURL = Env.SERVER_URL;
-
-// Get list of topics
-export const GetAllTopics = async () => {
-  const Topic = Parse.Object.extend("Topics");
-  const query = new Parse.Query(Topic);
-  return query.find().then((results) => {
-    return results.map((e) => e.get("Name"));
-  });
-};
 
 // Get category given topic name
 export const GetCategory = async (topicName) => {
@@ -34,18 +21,3 @@ export const GetCategory = async (topicName) => {
     });
   });
 };
-
-// Get user stats given user ID
-/*
-    Usage:
-    GetUserStats(userID).then((results) => {
-        console.log(results);
-    });
-*/
-export const GetUserStats = async (userID) => {
-    // Use Parse.User.current() later
-    const query = new Parse.Query(Parse.User);
-    return query.get(userID).then((results) => {
-        return results.get('Stats');
-    });
-}

@@ -137,6 +137,27 @@ hr {
   padding: 0 10rem;
 }
 
-input {
+.answer input {
   margin: 2em;
+}
+
+.auth {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth input {
+    margin: 1.5rem;
+}
+
+input[type=email]:invalid {
+    color: red;
+}
+label {
+    font-size: 1.5rem;
+}
+a {
+    color: #d59f4a;
 }
