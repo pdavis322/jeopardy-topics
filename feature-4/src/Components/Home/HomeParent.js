@@ -61,13 +61,12 @@ export default function HomeParent() {
         
     }
 
-
     return (
         <>
             <Topics topics={clueData.topicList} currentTopic={clueData.topic} onTopicChange={switchTopic} />
             <div className="content">
                 <Clue catName={clueData.catName} airDate={clueData.airDate} clue={clueData.clues[clueData.clueIndex]} />
-                <Answer clueData={{catID: clueData.catID, clueIndex: clueData.clueIndex, userID: 'CMnzc2Myuq'}} />
+                <Answer clueData={{catID: clueData.catID, clueIndex: clueData.clueIndex, topic: clueData.topic, userID: 'CMnzc2Myuq'}} />
             </div>
         </>
     );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PostAnswer, UpdateStats } from "../../Services/CluesService";
 
 const Answer = (props) => {
@@ -8,6 +8,11 @@ const Answer = (props) => {
       userCorrect: "",
       firstAttempt: true
     });
+
+    useEffect(() => {
+      setState({resposne: "", correctAnswer: "", userCorrect: "", firstAttempt: true});
+    }, [props.clueData.topic]);
+
 
     function submitAnswer(response) {
         PostAnswer(props.clueData.catID, props.clueData.clueIndex, props.userID, response, state.firstAttempt).then((result) => {
