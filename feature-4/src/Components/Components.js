@@ -2,6 +2,8 @@ import Header from "./Common/Header.js"
 import HomeModule from "./Home/Home.js";
 import StatsModule from "./Stats/Stats.js";
 import Auth from "./Auth/AuthRegister.js";
+import HomeParent from "./Home/HomeParent";
+import StatsParent from "./Stats/StatsParent";
 import {
     BrowserRouter as Router,
     Route,
