@@ -33,14 +33,16 @@ const Auth = (props) => {
     const childProps = {handleSubmit: handleSubmit, onChange: handleChange, result: result, changeRegister: setRegister};
     // Redirect after success
 
-    // not sure about this, redirecting to home if already logged in
+    // check if the user is already logged in/authenticated
     const authenticated = checkUser();
+    //if authenticated, don't show the register/login pages, redirect to home page
     if(authenticated) {
         return (
             <div>
                 <Redirect to="/" />
             </div>
           );
+    //otherwise, render the auth components as usual
     } else {
         return (
             result === "success" ? <Redirect to={"/"} /> : <AuthForm register={register} {...childProps} />

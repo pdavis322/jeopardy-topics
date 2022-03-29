@@ -1,24 +1,12 @@
 import StatsParent from "./StatsParent";
 import {checkUser} from "../../Services/AuthService";
-import {useState, useEffect} from "react";
 import ProtectedRoute from "../Common/AppTools/ProtectedRoute";
 
 const StatsModule = () => {
-    // const [flag, setFlag] = useState(false);
-
-    // Use Parse.authenticated() instead of flag
-    // useEffect(() => {
-    //     console.log(checkUser());
-    //     if (checkUser()) {
-    //     setFlag(true);
-    //     } else {
-    //     setFlag(false);
-    //     }
-    // }, []);
-
+    //check if the user is authenticated using the checkUser service and set a flag
     const authenticated = checkUser();
-    console.log("Flag is ", authenticated);
 
+    //return a protected route component with the flag being the user's authentication status
     return (
         <div>
         <ProtectedRoute
