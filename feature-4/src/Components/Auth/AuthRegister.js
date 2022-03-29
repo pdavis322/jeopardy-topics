@@ -10,6 +10,7 @@ const Auth = (props) => {
         password: ""
     });
     const [register, setRegister] = useState(props.registering);
+    // Used to display errors from the service
     const [result, setResult] = useState("");
     async function handleSubmit(e) {
         e.preventDefault();
@@ -28,6 +29,7 @@ const Auth = (props) => {
         });
     }
     const childProps = {handleSubmit: handleSubmit, onChange: handleChange, result: result, changeRegister: setRegister};
+    // Redirect after success
     return (
         result === "success" ? <Redirect to={"/"} /> : <AuthForm register={register} {...childProps} />
     );
