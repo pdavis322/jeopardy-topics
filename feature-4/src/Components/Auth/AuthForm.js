@@ -1,3 +1,4 @@
+// Used for both register and login views
 const AuthForm = (props) => {
     return (
         <div>
