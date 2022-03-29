@@ -1,4 +1,15 @@
 
+## [0.3.0] - 2022-03-29
+ 
+### Added
+- Added Parse authentication with register and login pages/capabilities
+- Added protected route component to block user from home and stat pages unless authenticated
+ 
+### Changed
+- Changed services to be in use-specific files
+ 
+### Fixed
+
 ## [0.2.0] - 2022-03-17
  
 ### Added
