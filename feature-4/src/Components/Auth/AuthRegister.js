@@ -2,8 +2,10 @@ import AuthForm from "./AuthForm";
 import { useState } from "react";
 import { RegisterUser, LoginUser } from "../../Services/AuthService";
 import { Redirect } from "react-router-dom";
+import { checkUser } from "../../Services/AuthService";
 
 const Auth = (props) => {
+    
     const [user, setUser] = useState({
         username: "",
         email: "",
@@ -30,8 +32,19 @@ const Auth = (props) => {
     }
     const childProps = {handleSubmit: handleSubmit, onChange: handleChange, result: result, changeRegister: setRegister};
     // Redirect after success
-    return (
-        result === "success" ? <Redirect to={"/"} /> : <AuthForm register={register} {...childProps} />
-    );
+
+    // not sure about this, redirecting to home if already logged in
+    const authenticated = checkUser();
+    if(authenticated) {
+        return (
+            <div>
+                <Redirect to="/" />
+            </div>
+          );
+    } else {
+        return (
+            result === "success" ? <Redirect to={"/"} /> : <AuthForm register={register} {...childProps} />
+        );
+    }
 };
 export default Auth;

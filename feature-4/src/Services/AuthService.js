@@ -23,3 +23,14 @@ export const LoginUser = async (user) => {
         return `Error: ${error.message}`;
     }
 }
+
+// Get current user
+export const getUser = () => {
+    return Parse.User.current();
+};
+
+// check that the current user is authenticated
+export const checkUser = () => {
+    const user = Parse.User.current();
+    return user ? user.authenticated() : false;
+};
