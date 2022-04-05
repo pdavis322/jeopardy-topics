@@ -6,8 +6,7 @@ const Header = () => {
         <Link className="home" to="/">jeopardy! topics</Link>
         <ul className="links">
             <li><Link to="/stats">stats</Link></li>
-            <li><Link to="/stats">settings</Link></li>
-            <li><Link to="/stats">profile</Link></li>
+            <li><Link to="/settings">settings</Link></li>
         </ul>
         </ul>
     );
