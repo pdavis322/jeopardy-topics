@@ -5,15 +5,14 @@ import { GetUserStats } from "../../Services/StatsService";
 
 export default function StatsParent() {
     //example userID
-    let myUserID = 'CMnzc2Myuq'
     const [userData, setUserData] = useState([]);
 
     // get the users stats asynchronously
     useEffect(() => {
-        GetUserStats(myUserID).then((results) => {
+        GetUserStats().then((results) => {
             setUserData(results);
         });
-    }, [myUserID]);
+    }, []);
 
     return (
         <>
