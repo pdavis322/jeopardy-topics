@@ -4,7 +4,7 @@ import Topics from "./Topics.js";
 import Clue from "./Clue.js";
 import Answer from "./Answer.js";
 
-import { GetCategory } from "../../Services/CategoriesService";
+import { GetCategory } from "../../Services/CategoriesService.js";
 import { GetAllTopics } from "../../Services/TopicsService.js";
 
 export default function HomeParent() {

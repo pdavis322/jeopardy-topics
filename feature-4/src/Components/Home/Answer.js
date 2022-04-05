@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { PostAnswer, UpdateStats } from "../../Services/CluesService";
+import { PostAnswer } from 
+//import { PostAnswer, UpdateStats } from "../../Services/CluesService";
 
 const Answer = (props) => {
     const [state, setState] = useState({
