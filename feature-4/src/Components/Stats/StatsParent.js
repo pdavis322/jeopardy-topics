@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import UserBar from "./UserBar.js"
 import UserDoughnut from "./UserDoughnut.js"
-import { GetUserStats } from "../../Services/CluesService";
+import { GetUserStats } from "../../Services/StatsService";
 
 export default function StatsParent() {
     //example userID

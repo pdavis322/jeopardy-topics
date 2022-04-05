@@ -1,6 +1,7 @@
 import Header from "./Common/Header.js"
 import HomeModule from "./Home/Home.js";
 import StatsModule from "./Stats/Stats.js";
+import Auth from "./Auth/AuthModule.js";
 import {
     BrowserRouter as Router,
     Route,
@@ -16,6 +17,8 @@ const Components = () => {
             <hr />
             <Switch>
                 <Route path="/" exact component={HomeModule} />
+                <Route path="/register" render={() => <Auth registering={true} />} />
+                <Route path="/login" render={() => <Auth registering={false} />} />
                 <Route path="/stats" component={StatsModule} />
                 <Redirect to="/" />
             </Switch>

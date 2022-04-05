@@ -4,7 +4,8 @@ import Topics from "./Topics.js";
 import Clue from "./Clue.js";
 import Answer from "./Answer.js";
 
-import { GetAllTopics, GetCategory } from "../../Services/CluesService";
+import { GetCategory } from "../../Services/CategoriesService";
+import { GetAllTopics } from "../../Services/TopicsService.js";
 
 export default function HomeParent() {
     const [clueData, setClues] = useState({
