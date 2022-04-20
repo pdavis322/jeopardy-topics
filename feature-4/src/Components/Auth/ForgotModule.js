@@ -1,9 +1,10 @@
 import Parse from "parse";
-import { Redirect } from "react-router-dom";
 
 const ForgotModule = () => {
     const submitHandle = (e) => {
+        //prevent immediately reloading the page
         e.preventDefault();
+        //get the email from the form and request the password reset, then redirect back to the home page
         const email = e.target.email.value;
         Parse.User.requestPasswordReset(email);
         window.location.href="/";

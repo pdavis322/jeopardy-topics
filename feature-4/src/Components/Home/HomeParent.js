@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import Topics from "./Topics.js";
 import Clue from "./Clue.js";
 import Answer from "./Answer.js";
+import TwitterFeed from "./TwitterFeed.js"
+import { TwitterTweetEmbed } from "react-twitter-embed";
+import socketIOClient from "socket.io-client";
 
 import { GetCategory } from "../../Services/CategoriesService";
 import { GetAllTopics } from "../../Services/TopicsService.js";
@@ -53,6 +56,7 @@ export default function HomeParent() {
         }
     }
 
+    
 
     return (
         <>
@@ -61,6 +65,7 @@ export default function HomeParent() {
                 <Clue catName={clueData.catName} airDate={clueData.airDate} clue={clueData.clues[clueData.clueIndex]} />
                 <Answer />
             </div>
+            <TwitterFeed/>
         </>
     );
 };
