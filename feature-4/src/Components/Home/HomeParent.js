@@ -31,7 +31,6 @@ export default function HomeParent() {
     }, []);
 
     // Update clue whenever topic is changed
-    // Add Parse.current.user() later
     useEffect(() => {
         GetCategory(clueData.topic).then((results) => {
             setClues(prevClues => {
@@ -47,6 +46,8 @@ export default function HomeParent() {
         });
     }, [clueData.topic]);
 
+    // Reset 
+
     // Pass to Topics component to switch topic
     function switchTopic(e) {
         let topic = e.target.innerHTML;
@@ -60,14 +61,19 @@ export default function HomeParent() {
         }
     }
 
+    // Pass to Answer component to go to next clue
+    function nextClue() {
+        setClues({...clueData, clueIndex: clueData.clueIndex + 1});
+    }
+
     return (
         <>
             <Topics topics={clueData.topicList} currentTopic={clueData.topic} onTopicChange={switchTopic} />
             <div className="content">
                 <Clue catName={clueData.catName} airDate={clueData.airDate} clue={clueData.clues[clueData.clueIndex]} />
-                <Answer clueData={{catID: clueData.catID, clueIndex: clueData.clueIndex, topic: clueData.topic, userID: 'CMnzc2Myuq'}} />
+                <Answer clueData={{catID: clueData.catID, clueIndex: clueData.clueIndex, topic: clueData.topic}} nextClue={nextClue} />
+                <TwitterFeed />
             </div>
-            <TwitterFeed/>
         </>
     );
 };
