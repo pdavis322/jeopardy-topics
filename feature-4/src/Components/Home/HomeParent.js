@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import Topics from "./Topics.js";
 import Clue from "./Clue.js";
 import Answer from "./Answer.js";
+import TwitterFeed from "./TwitterFeed.js"
+import { TwitterTweetEmbed } from "react-twitter-embed";
+import socketIOClient from "socket.io-client";
 
 import { GetCategory } from "../../Services/CategoriesService.js";
 import { GetAllTopics } from "../../Services/TopicsService.js";
@@ -57,11 +60,6 @@ export default function HomeParent() {
         }
     }
 
-    // Pass to Answer component for going to the next clue
-    function nextClue() {
-        
-    }
-
     return (
         <>
             <Topics topics={clueData.topicList} currentTopic={clueData.topic} onTopicChange={switchTopic} />
@@ -69,6 +67,7 @@ export default function HomeParent() {
                 <Clue catName={clueData.catName} airDate={clueData.airDate} clue={clueData.clues[clueData.clueIndex]} />
                 <Answer clueData={{catID: clueData.catID, clueIndex: clueData.clueIndex, topic: clueData.topic, userID: 'CMnzc2Myuq'}} />
             </div>
+            <TwitterFeed/>
         </>
     );
 };
