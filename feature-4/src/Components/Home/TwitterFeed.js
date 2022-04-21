@@ -14,7 +14,6 @@ const TwitterFeed = () => {
     getTweets().then((data) => {
       setIDs(data);
       console.log("got tweets");
-      console.log(ids);
     });
   }, []);
 
@@ -23,9 +22,12 @@ const TwitterFeed = () => {
   };
   
   return (
+    <>
+    {ids.length > 0 && (
     <div className="twitterFeed">
-      {ids.map((id) => (<TwitterTweetEmbed tweetId={id}/>))}
-    </div>
+      {ids.map((id) => (<TwitterTweetEmbed key={id} tweetId={id}/>))}
+    </div>)}
+    </>
   );
 };
 

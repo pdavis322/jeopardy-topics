@@ -1,5 +1,4 @@
 const express = require("express")
-const tweetFetch = require("./routes/tweetFetch")
 const needle = require('needle');
 const cors = require("cors");
 

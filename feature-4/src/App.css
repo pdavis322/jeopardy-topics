@@ -24,7 +24,14 @@ body {
   grid-template-columns: 1fr;
   justify-items: center;
   align-items: center;
-  text-align: center;
+  overflow-y: scroll;
+  max-height: 1000px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.twitterFeed::-webkit-scrollbar {
+  display: none;
 }
 
 .graph {
