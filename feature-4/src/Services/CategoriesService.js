@@ -17,7 +17,7 @@ export const GetCategory = async (topicName) => {
     const catQuery = new Parse.Query(Category);
     catQuery.equalTo("Topic", topicPointer);
     return catQuery.find().then((result) => {
-        return {airDate: result[0].get('AirDate'), catName: result[0].get('Name'), clues: result[0].get('Clues').map(e => e.answer)};
+        return {airDate: result[0].get('AirDate'), catName: result[0].get('Name'), catID: result[0].id, clues: result[0].get('Clues').map(e => e.answer)};
     });
   });
 };

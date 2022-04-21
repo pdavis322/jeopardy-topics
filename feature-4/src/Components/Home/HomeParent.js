@@ -5,7 +5,7 @@ import Clue from "./Clue.js";
 import Answer from "./Answer.js";
 import TwitterFeed from "./TwitterFeed.js"
 
-import { GetCategory } from "../../Services/CategoriesService";
+import { GetCategory } from "../../Services/CategoriesService.js";
 import { GetAllTopics } from "../../Services/TopicsService.js";
 
 export default function HomeParent() {
@@ -15,6 +15,7 @@ export default function HomeParent() {
         clueIndex: 0,
         airDate: "",
         catName: "",
+        catID: "",
         topicList: []
     });
 
@@ -28,6 +29,7 @@ export default function HomeParent() {
     }, []);
 
     // Update clue whenever topic is changed
+    // Add Parse.current.user() later
     useEffect(() => {
         GetCategory(clueData.topic).then((results) => {
             setClues(prevClues => {
@@ -35,6 +37,7 @@ export default function HomeParent() {
                     ...prevClues,
                     airDate: results.airDate,
                     catName: results.catName,
+                    catID: results.catID,
                     clues: results.clues,
                     clueIndex: 0
                 };
@@ -42,6 +45,7 @@ export default function HomeParent() {
         });
     }, [clueData.topic]);
 
+    // Pass to Topics component to switch topic
     function switchTopic(e) {
         let topic = e.target.innerHTML;
         if (clueData.topic !== topic) {
@@ -54,14 +58,12 @@ export default function HomeParent() {
         }
     }
 
-    
-
     return (
         <>
             <Topics topics={clueData.topicList} currentTopic={clueData.topic} onTopicChange={switchTopic} />
             <div className="content">
                 <Clue catName={clueData.catName} airDate={clueData.airDate} clue={clueData.clues[clueData.clueIndex]} />
-                <Answer />
+                <Answer clueData={{catID: clueData.catID, clueIndex: clueData.clueIndex, topic: clueData.topic, userID: 'CMnzc2Myuq'}} />
             </div>
             <TwitterFeed/>
         </>
