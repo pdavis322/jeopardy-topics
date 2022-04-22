@@ -16,3 +16,22 @@ export const GetUserStats = async () => {
         return results.get('Stats');
     });
 }
+
+// Update user's stats for given topic
+export const UpdateStats = async(topic, correct, override) => {
+    let stats = await GetUserStats();
+    let index = stats.findIndex(e => e.topic === topic);
+    if (index < 0) {
+        stats.push({topic: topic, correct: correct === "correct" ? 1 : 0, total: 1});
+    }
+    else {
+        if (!override) {
+            stats[index].total++;
+        }
+        if (correct === "correct") {
+            stats[index].correct++;
+        }
+    }
+    Parse.User.current().set("Stats", stats);
+    Parse.User.current().save();
+}
