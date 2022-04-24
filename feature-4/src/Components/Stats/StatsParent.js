@@ -11,8 +11,9 @@ export default function StatsParent() {
     useEffect(() => {
         GetUserStats().then((results) => {
             setUserData(results);
+            console.log(userData);
         });
-    }, []);
+    }, [userData]);
 
     return (
         <>

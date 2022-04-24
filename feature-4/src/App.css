@@ -176,3 +176,10 @@ label {
 a {
     color: #d59f4a;
 }
+
+.share {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

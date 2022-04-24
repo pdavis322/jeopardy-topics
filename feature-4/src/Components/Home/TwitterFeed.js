@@ -1,6 +1,7 @@
 import { TwitterTweetEmbed } from "react-twitter-embed";
 import { getTweets } from "../../Services/TweetService";
 import { useEffect, useState } from "react";
+import { TwitterShareButton } from "react-twitter-embed";
 
 
 const TwitterFeed = () => {
@@ -18,11 +19,16 @@ const TwitterFeed = () => {
   }, []);
 
   const options = {
-    width: "500"
-  };
+    "text": `I'm getting smarter by using @JeopardyTrainer\nTry it out with me!`,
+    "data-size": "large"
+}
   
   return (
     <>
+    <div className="twitterFeed">
+      <p>Share us with your friends!</p>
+      <TwitterShareButton className="share" options={options}/>
+    </div>
     {ids.length > 0 && (
     <div className="twitterFeed">
       {ids.map((id) => (<TwitterTweetEmbed key={id} tweetId={id}/>))}
