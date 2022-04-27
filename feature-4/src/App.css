@@ -19,6 +19,14 @@ body {
   text-align: center;
 }
 
+.twitterFeed {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+}
+
 .graph {
   border: 2px solid white;
   padding: 10px 10px 20px 10px;
@@ -160,4 +168,8 @@ label {
 }
 a {
     color: #d59f4a;
+}
+
+.clue {
+  padding: 1rem;
 }

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 // Used for both register and login views
 const AuthForm = (props) => {
     return (
@@ -18,6 +20,9 @@ const AuthForm = (props) => {
                 <button>Submit</button>
                 <h1>{props.result}</h1>
                 <h2>{props.register ? "Already" : "Don't"} have an account? Go to <a href={props.register ? "/login" : "/register"}>{props.register ? "login" : "register"}</a></h2>
+                {!props.register &&
+                    <Link to="/forgot">Forgot Password? Click here.</Link>
+                }
             </form>
         </div>
     );
