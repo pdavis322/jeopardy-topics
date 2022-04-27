@@ -17,8 +17,9 @@ const Answer = (props) => {
     }, [props.clueData]);
 
     // Either add or update UserRecord once clue is finished
-    function next() {
-      CategoryFinished(props.clueData.topic, props.clueData.catID, props.clueData.clueIndex);
+    // Needs to be async since we have to wait until CategoryFinished is done to go to the next clue
+    async function next() {
+      await CategoryFinished(props.clueData.topic, props.clueData.catID, props.clueData.clueIndex);
       props.nextClue(props.clueData.clueIndex >= 4);
     }
 

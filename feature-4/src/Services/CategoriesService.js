@@ -12,6 +12,7 @@ export const GetCategory = async (topicName) => {
   recordQuery.descending("createdAt");
   let recordResult = await recordQuery.find();
   if (recordResult.length > 0 && recordResult[0].get("ClueIndex") < 4) {
+    console.log(recordResult[0].get("ClueIndex"));
     catQuery.equalTo("objectId", recordResult[0].get("Category"));
     let catResult = await catQuery.find();
     return {airDate: catResult[0].get("AirDate"), catName: catResult[0].get("Name"), catID: catResult[0].id, clues: catResult[0].get('Clues').map(e => e.answer), clueIndex: recordResult[0].get("ClueIndex") + 1};
