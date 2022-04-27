@@ -1,3 +1,16 @@
+## [0.4.0] - 2022-04-27
+
+### Added
+- Added tracking which clues a user has already seen so that they always see new clues
+- Added text to indicate that a user has completed all the clues in a topic
+- Added answer submission
+- Submitting an answer changes the user's stats
+- Added ability to override answer evaluation which would then update the user's stats
+ 
+### Changed
+- If a user has completed some clues in a category, they will resume that category
+ 
+### Fixed
 
 ## [0.3.0] - 2022-03-29
  
