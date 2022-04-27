@@ -11,14 +11,16 @@ const Answer = (props) => {
       firstAttempt: true
     });
 
+    // Clear state when clue gets updated
     useEffect(() => {
       setState({response: "", correctAnswer: "", userCorrect: "", firstAttempt: true});
     }, [props.clueData]);
-    useEffect(() => {
-      if (props.clueData.clueIndex > 0) {
-        CategoryFinished(props.clueData.catID, props.clueData.clueIndex - 1);
-      }
-    }, [props.clueData.clueIndex]);
+
+    // Either add or update UserRecord once clue is finished
+    function next() {
+      CategoryFinished(props.clueData.topic, props.clueData.catID, props.clueData.clueIndex);
+      props.nextClue(props.clueData.clueIndex >= 4);
+    }
 
 
     function submitAnswer(response) {
@@ -34,7 +36,7 @@ const Answer = (props) => {
 
     function override() {
       UpdateStats(props.clueData.topic, "correct", true);
-      props.nextClue();
+      next();
     }
 
     return (
@@ -46,7 +48,7 @@ const Answer = (props) => {
             <br />
             {state.userCorrect !== "showingAnswer" && state.userCorrect !== "correct" && <button style={{margin: '5px'}} onClick={() => submitAnswer(state.response)}>Submit</button>}
             {state.userCorrect === "incorrect" && <button style={{margin: '5px'}} onClick={() => setState({...state, userCorrect: "showingAnswer"})}>Give up</button>}             
-            {(state.userCorrect === "correct" || state.userCorrect === "showingAnswer") && <button style={{margin: '5px'}} onClick={() => props.nextClue()}>Next</button>}
+            {(state.userCorrect === "correct" || state.userCorrect === "showingAnswer") && <button style={{margin: '5px'}} onClick={() => next()}>Next</button>}
             {!state.firstAttempt && state.userCorrect === "showingAnswer" && <button style={{margin: '5px'}} onClick={() => override()}>Override - I was right!</button>}
       </div>
     );
