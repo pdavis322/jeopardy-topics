@@ -19,13 +19,6 @@ body {
   text-align: center;
 }
 
-.twitterFeed {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  align-items: center;
-  text-align: center;
-}
 
 .graph {
   border: 2px solid white;
@@ -142,8 +135,9 @@ hr {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10rem;
+  padding: 2 10rem;
 }
+
 
 .answer input {
   margin: 2em;

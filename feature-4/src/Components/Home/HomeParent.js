@@ -3,9 +3,6 @@ import { useEffect, useState } from "react";
 import Topics from "./Topics.js";
 import Clue from "./Clue.js";
 import Answer from "./Answer.js";
-import TwitterFeed from "./TwitterFeed.js"
-import { TwitterTweetEmbed } from "react-twitter-embed";
-import socketIOClient from "socket.io-client";
 
 import { GetCategory } from "../../Services/CategoriesService.js";
 import { GetAllTopics } from "../../Services/TopicsService.js";
@@ -79,7 +76,6 @@ export default function HomeParent() {
                 {clueData.clueIndex !== -1 ? 
                     (<><Clue catName={clueData.catName} airDate={clueData.airDate} clue={clueData.clues[clueData.clueIndex]} /><Answer clueData={{ catID: clueData.catID, clueIndex: clueData.clueIndex, topic: clueData.topic }} nextClue={nextClue} /></>) : <h1>You've run out of clues for this topic! Try a different one.</h1>
                 }
-                <TwitterFeed />
             </div>
         </>
     );
