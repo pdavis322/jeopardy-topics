@@ -57,11 +57,31 @@ button {
   color: white;
 }
 
+:root {
+  --select-border: #393939;
+  --select-focus: #101484;
+  --select-arrow: var(--select-border);
+
+}
+
+select {
+  color: white;
+  font-family: inherit;
+  background-color: #071278;
+  font-size: 1.5rem;
+  border: 2px solid #d59f4a;
+  cursor: pointer;
+  border-radius: 3px;
+}
+/* select::after {
+} */
+
 /* Button hover */
 button:hover,
 button.inactiveTopic:hover {
   cursor: pointer;
   background-color: white;
+  grid-area: select;
   color: #d59f4a;
 }
 
@@ -132,10 +152,8 @@ hr {
 }
 
 .topic {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2 10rem;
+  text-align: center;
+  display: flexbox;
 }
 
 

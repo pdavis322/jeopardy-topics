@@ -48,7 +48,7 @@ export default function HomeParent() {
 
     // Pass to Topics component to switch topic
     function switchTopic(e) {
-        let topic = e.target.innerHTML;
+        let topic = e.target.value;
         if (clueData.topic !== topic) {
             setClues(prevClues => {
                 return {
