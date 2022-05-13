@@ -66,15 +66,18 @@ button {
 
 select {
   color: white;
+  outline: none;
   font-family: inherit;
   background-color: #071278;
   font-size: 1.5rem;
+  padding: 0.5rem;
   border: 2px solid #d59f4a;
   cursor: pointer;
   border-radius: 3px;
 }
-/* select::after {
-} */
+select:focus {
+  outline: none;
+}
 
 /* Button hover */
 button:hover,
